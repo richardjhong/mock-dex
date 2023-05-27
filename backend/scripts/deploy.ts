@@ -1,24 +1,21 @@
 import { ethers } from "hardhat";
+import "dotenv/config";
+import { CRYPTO_DEV_TOKEN_CONTRACT_ADDRESS } from "../constants";
 
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+const main = async () => {
+  const cryptoDevTokenAddress = CRYPTO_DEV_TOKEN_CONTRACT_ADDRESS;
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+  const exchangeContract = await ethers.getContractFactory("Exchange");
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const deployedExchangeContract = await exchangeContract.deploy(cryptoDevTokenAddress);
+  await deployedExchangeContract.deployed();
 
-  await lock.deployed();
+  console.log("Exchange Contract Address: ", deployedExchangeContract.address);
+};
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
-}
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
