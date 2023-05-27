@@ -29,7 +29,7 @@ export const getEtherBalance = async (
 };
 
 /**
- * getCDTokensBalance: Retrieves teh Crypto Dev tokens in the account
+ * getCDTokensBalance: Retrieves the Crypto Dev tokens in the account
  */
 export const getCDTokensBalance = async (provider: providers.Web3Provider, address: string) => {
   try {
