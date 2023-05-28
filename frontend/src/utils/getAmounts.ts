@@ -11,7 +11,7 @@ import {
  */
 export const getEtherBalance = async (
   provider: providers.Web3Provider,
-  address: string,
+  address: string | null,
   contract: boolean = false
 ) => {
   try {
@@ -19,7 +19,7 @@ export const getEtherBalance = async (
       const balance = await provider.getBalance(EXCHANGE_CONTRACT_ADDRESS);
       return balance;
     } else {
-      const balance = await provider.getBalance(address);
+      const balance = await provider.getBalance(address!);
       return balance;
     }
   } catch (err) {
