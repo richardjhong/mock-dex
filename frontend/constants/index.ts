@@ -1,5 +1,5 @@
 export const TOKEN_CONTRACT_ADDRESS = "0x89B2a73E89B72b738300f573ACA9f1cB21c68E13";
-export const EXCHANGE_CONTRACT_ADDRESS = "0x80f56791DB880c316e9a2738AC2e46E2f99BD263";
+export const EXCHANGE_CONTRACT_ADDRESS = "0x5d0Ae98696e75dd137EE23f5a5725d09C32AfA8C";
 export const TOKEN_CONTRACT_ABI = [
   {
     inputs: [
@@ -491,10 +491,6 @@ export const EXCHANGE_CONTRACT_ABI = [
     type: "event",
   },
   {
-    stateMutability: "payable",
-    type: "fallback",
-  },
-  {
     inputs: [
       {
         internalType: "uint256",
@@ -842,9 +838,5 @@ export const EXCHANGE_CONTRACT_ABI = [
     ],
     stateMutability: "nonpayable",
     type: "function",
-  },
-  {
-    stateMutability: "payable",
-    type: "receive",
   },
 ];

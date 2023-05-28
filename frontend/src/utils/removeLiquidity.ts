@@ -19,7 +19,7 @@ export const removeLiquidity = async (
  *                       removes 'removeLPTokenWei' amount of LP tokens from the contract
  */
 export const getTokensAfterRemove = async (
-  provider: providers.JsonRpcSigner,
+  provider: providers.Web3Provider,
   removeLPTokenWei: BigNumber,
   _ethBalance: BigNumber,
   cryptoDevTokenReserve: BigNumber
